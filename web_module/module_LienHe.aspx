@@ -65,14 +65,12 @@
                     </div>
 
                     <div class="cell-1-2 tab-cell-1-1">
-                        <h3 class="hoa">Công ty TNHH Nét Huế Việt Nam</h3>
-                        <p class="p-bottom"><strong> Nét Huế </strong> Là một trang web về đồ ăn, nói lên những đặc sản  tại Huế</p>
+                        <h3 class="hoa">Shop thời trang nữ AL Fashion Store</h3>
+                        <p class="p-bottom"><strong> AL Fashion Store </strong> Là một trang web về thời trang nữ</p>
                         <ul class="contact-page">
-                            <li>Đà Nẵng : 459 Tôn Đức Thắng, Hoà Khánh Nam, Liên Chiểu, TP.Đà Nẵng, Vietnam
+                            <li>Đà Nẵng : 28 Đồng Trí 6, Hoà Khánh Nam, Liên Chiểu, TP.Đà Nẵng, Vietnam
                             </li>
-                            <li>Huế: 31 Hoàng Thế Thiện, Xuân Phú, Thành phố Huế, Thừa Thiên Huế , Vietnam
-                            </li>
-                            <li>Giấy chứng nhận đăng ký doanh nghiệp số:0966469789</li>
+                       
                         </ul>
                     </div>
                 </div>

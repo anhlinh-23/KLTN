@@ -273,13 +273,12 @@
                                 <div class="cell-2-3 mobile-cell-1-1 tab-cell-1-1 ">
                                     <div class="flex-container flex-space-between">
                                         <div class="cell-3-5 mobile-cell-1-1 margin-bottom-20">
-                                            <iframe src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/MeoBoutiqueee/&amp;tabs&amp;width=340&amp;height=214&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId=1584582048427439" width="100%" height="214" style="border: none; overflow: hidden" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                                         </div>
                                         <div class="cell-2-5 mobile-cell-1-1 margin-bottom-20">
                                             <div class="title-footer">Mạng xã hội</div>
                                             <div class="c20"></div>
                                             <div class="linksmo">
-                                                <a href="https://www.facebook.com/MeoBoutiqueee">
+                                        
                                                     <img src="images/logo/facebook.png" /></a>
                                                 <a href="#">
                                                     <img src="images/logo/twitter.png" /></a>

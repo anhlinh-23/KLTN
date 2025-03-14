@@ -10,7 +10,7 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="ContentPlaceHolder5" runat="Server">
     <div class="crumb">
-        <div class="grid"><a href="/">Trang chủ</a> <i class="fa fa-angle-right"></i><a href="/dat-ban/">Đặt hàng </a></div>
+        <div class="grid"><a href="/">Trang chủ</a> <i class="fa fa-angle-right"></i><a href="/dat-hang/">Đặt hàng </a></div>
     </div>
     <div class="grid">
         <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css">
@@ -56,26 +56,7 @@
                                     <div style="width: 50%">
                                         <input type="date" runat="server" id="txtDay" class="notNull" name="name" value="" />
                                     </div>
-                                    <%--<div class="cell-1-3" style="width: 45%">
-                                        <input type="time" runat="server" id="txtTime" class="notNull" name="name" value="" />
-                                    </div>--%>
-                                </div>
-                            </div>
-                        <%--    <div class="item">
-                                Số người
-                            	<input name="soluong" placeholder="Số người" runat="server" id="txtNumber" class="notNull" type="number" min="1" max="500">
-                            </div>
-                            <div class="item">
-                                Nhà hàng
-                            	<select name="nhahang" id="txtHeThong">
-                                    <asp:Repeater runat="server" ID="rpHeThong">
-                                        <ItemTemplate>
-                                            <option value="<%#Eval("re_id") %>"><%#Eval("re_name") %></option>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </select>
-                            </div>
-                        </div>--%>
+                                  
                         <div class="cell-1-1">
                             <textarea name="ghichu" runat="server" id="txtGhiChu" placeholder="Ghi chú"></textarea>
                         </div>

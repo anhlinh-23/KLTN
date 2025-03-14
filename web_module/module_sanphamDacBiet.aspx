@@ -17,7 +17,7 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="ContentPlaceHolder5" runat="Server">
     <div class="crumb">
-        <div class="grid"><a href="/">Trang chủ</a> <i class="fa fa-angle-right"></i><a href="/thuc-don/">Sản phẩm</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="/nhom-<%=_Link %>"><%=_Name %></a></div>
+        <div class="grid"><a href="/">Trang chủ</a> <i class="fa fa-angle-right"></i><a href="/san-pham/">Sản phẩm</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="/nhom-<%=_Link %>"><%=_Name %></a></div>
     </div>
     <div style="background: #FFF;" class="container">
         <div class="row">
@@ -37,24 +37,11 @@
                                 <div class="c20"></div>
                                 <div class="price-detail">Giá: <%#Eval("pr_price") %>₫</div>
                                 <div class="c20"></div>
-                                <a href="javascript:void(0)" class="btn-order-detail" onclick="addCart(<%#Eval("pr_id") %>)">Đặt món ngay</a>
+                                <a href="javascript:void(0)" class="btn-order-detail" onclick="addCart(<%#Eval("pr_id") %>)">Đặt hàng ngay</a>
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
-                    <%--<div class="cell-3-5 mobile-cell-1-1 tab-cell-1-1">
-                        <img src="../images/bun/bun-bo-hue-dac-biet.jpg" width="100%">
-                    </div>
-                    <div class="cell-2-5 mobile-cell-1-1 tab-cell-1-1 ">
-                        <h1 class="product-detail-name">Bún bò Huế đặc biệt</h1>
-                        <div class="c30"></div>
-                        <div>
-                            <div style="text-align: justify">Nguyên liệu và thành phần: thịt bò, bò viên, móng giò, chả cua, gân bò tiết, bún sợi to, nước hầm xương, mắm ruốc.</div>
-                        </div>
-                        <div class="c20"></div>
-                        <div class="price-detail">Giá: 84,000₫</div>
-                        <div class="c20"></div>
-                        <a href="/addcart/bun-bo-hue-dac-biet.html" class="btn-order-detail"><i class="fa fa-shopping-cart"></i>Đặt món ngay</a>
-                    </div>--%>
+                    
                 </div>
             </div>
             <div class="content-text col-xs-5 col-xl-5">
