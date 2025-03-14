@@ -1,4 +1,5 @@
 ﻿@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
 
 html, body {
     font-family: Muli-R, Arial, sans-serif;
@@ -1039,13 +1040,7 @@ img {
         color: #d5a34c;
     }
 
-.page-about {
-    background-image: url(https://vuonnhien.vn/wp-content/uploads/2020/03/tranh-ve-dong-que.jpg);
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: cover;
-    background-attachment: fixed;
-}
+
 
 .title-footer {
     font-family: Roboto-B, Tahoma, Geneva, sans-serif;
@@ -1841,18 +1836,7 @@ img {
     }
 }
 
-.page-menu {
-    background-image: url('../images/logo/bg-page-about.png');
-    /* Đường dẫn đến hình nền */
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: cover;
-    background-attachment: fixed;
-    overflow: hidden;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-}
+
 
 .user-icon {
     margin: 1%;
