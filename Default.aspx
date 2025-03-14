@@ -158,25 +158,6 @@
             <input type="text" id="txtId" runat="server" name="name" value="" />
             <a href="#" id="btnAdd" runat="server" onserverclick="btnAdd_ServerClick">content</a>
         </div>
-        <%--<script>
-            $(function () {
-                $('.box-list-map .item-map:first').addClass('active');
-                /*$( "#loadmap" ).html('<div class="loading">Đang tải...</div>');
-                $( "#loadmap" ).load( "/index4.php?page=dailymap&id=" + $('.box-list-map .item-map:first').data('id'), function( response, status, xhr ) {
-                  if ( status == "error" ) {}
-                });*/
-
-                $('.item-map').click(function () {
-                    $('.box-list-map .item-map').removeClass('active');
-                    $(this).addClass('active');
-                    /*$( "#loadmap" ).html('<div class="loading">Đang tải...</div>');
-                    $( "#loadmap" ).load( "/index4.php?page=dailymap&id=" + $(this).data('id'), function( response, status, xhr ) {
-                      if ( status == "error" ) { }
-                    });*/
-                    return false;
-                })
-            })
-        </script>--%>
     </div>
     <script>
         function addCart(id) {
