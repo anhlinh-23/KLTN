@@ -208,100 +208,44 @@
             </asp:ContentPlaceHolder>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder7" runat="server">
             </asp:ContentPlaceHolder>
-            <div class="footer" style="width: 100%; overflow: hidden">
-                <div class="c30"></div>
-                <div class="grid">
-                    <div class="flex-container  flex-space-between">
+          <div class="footer" style="width: 100%; overflow: hidden; background-color: #111; padding: 40px 0; color: white;">
+    <div class="grid" style="display: flex; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: auto;">
+        <!-- Logo và thông tin liên hệ -->
+        <div class="footer-section" style="flex: 1; min-width: 300px; text-align: left; padding: 20px;">
+            <img src="../images/logo/logo1.png" style="max-width: 150px; margin-bottom: 20px;" />
+            <h3>Thông tin liên hệ</h3>
+            <p><i class="bi bi-geo-alt"></i> 28 Đồng Trí 6- Hoà Khánh Nam-Liên Chiểu-Đà Nẵng</p>
+            <p><i class="bi bi-telephone"></i> Điện thoại: 0386809355 | Hotline: 19001234</p>
+            <p><i class="bi bi-envelope"></i> Email: anhlinh@gmail.com</p>
+            <p><i class="bi bi-globe"></i> Website: <a href="#" style="color: white;">AlFashionstore.com.vn</a></p>
+        </div>
 
-                        <div class="cell-2-5 mobile-cell-1-1 tab-cell-1-1 pad-cell-1-1 margin-bottom-20">
-                            <div class="flex-container">
-                                <div class="cell-1-2 mobile-cell-1-1">
-                                    <img src="../images/logo/logo1.png" />
-                                </div>
-                                <div class="cell-1-2 mobile-cell-1-1">
-                                    <div class="title-footer">Thông tin liên hệ</div>
-                                    <div class="c20"></div>
-                                    <div>
-                                        <table border="0" cellpadding="5" cellspacing="0" class="table-list" style="border-collapse: collapse">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <img src="images/icon/icon-location.png" style="height: 15px; width: 11px" />
+        <!-- Tin tức nổi bật và chính sách -->
+        <div class="footer-section" style="flex: 1; min-width: 300px; text-align: left; padding: 20px;">
+            <h3><a href="tin-tuc-noi-bat/index.html" style="color: white;">Tin tức nổi bật</a></h3>
+            <h3><a href="co-the-ban-quan-tam/index.html" style="color: white;">Có thể bạn quan tâm</a></h3>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="chinh-sach-giao-hang/index.html" style="color: white;">Chính sách giao hàng</a></li>
+                <li><a href="huong-dan-chon-size-chuan/index.html" style="color: white;">Hướng dẫn chọn size chuẩn</a></li>
+                <li><a href="chinh-sach-doi-tra-va-bao-hanh/index.html" style="color: white;">Chính sách đổi trả và bảo hành</a></li>
+            </ul>
+        </div>
 
-                                                    <td>28 Đồng Trí 6- Hoà khánh Nam-Liên Chiểu-Đà Nẵng </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <i class="bi bi-telephone"></i>
-                                                        <td>Điện thoại: 0386809355<br />
-                                                            Hotline: 19001234</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <i class="bi bi-envelope"></i>
-                                                        <td>Email:anhlinh@gmail.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <i class="bi bi-globe"></i>
-                                                        <td>Website: AlFashionstore.com.vn</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cell-3-5 mobile-cell-1-1 tab-cell-1-1 pad-cell-1-1">
-                            <div class="flex-container">
-                                <div class="cell-1-3 mobile-cell-1-1 tab-cell-1-1 margin-bottom-20">
-                                    <div class="cell-1-1 tab-cell-1-2 mobile-cell-1-1 margin-bottom-20" style="padding-left: 10px;">
-                                        <div class="title-footer"><a href="tin-tuc-noi-bat/index.html">Tin tức nổi bật</a></div>
-                                        <div class="c10"></div>
-                                        <ul class="menufooter ">
-                                        </ul>
-                                        <div class="title-footer"><a href="co-the-ban-quan-tam/index.html">Có thể bạn quan tâm</a></div>
-                                        <div class="c10"></div>
-                                        <ul class="menufooter ">
-                                            <li><a href="chinh-sach-giao-hang/index.html">Chính sách giao hàng</a></li>
-                                            <li><a href="huong-dan-chon-size-chuan/index.html">Hướng dẫn chọn size chuẩn</a></li>
-                                            <li><a href="chinh-sach-doi-tra-va-bao-hanh/index.html">Chính sách đổi trả và bảo hành</a></li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                                <div class="cell-2-3 mobile-cell-1-1 tab-cell-1-1 ">
-                                    <div class="flex-container flex-space-between">
-                                        <div class="cell-3-5 mobile-cell-1-1 margin-bottom-20">
-                                        </div>
-                                        <div class="cell-2-5 mobile-cell-1-1 margin-bottom-20">
-                                            <div class="title-footer">Mạng xã hội</div>
-                                            <div class="c20"></div>
-                                            <div class="linksmo">
-                                        
-                                                    <img src="images/logo/facebook.png" /></a>
-                                                <a href="#">
-                                                    <img src="images/logo/twitter.png" /></a>
-                                                <a href="#">
-                                                    <img src="images/logo/youtube.png" /></a>
-                                                <a href="#">
-                                                    <img src="images/logo/zalo.png" /></a>
-                                            </div>
-                                            <div class="c10"></div>
-
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="c30"></div>
+        <!-- Mạng xã hội -->
+        <div class="footer-section" style="flex: 1; min-width: 300px; text-align: left; padding: 20px;">
+            <h3>Mạng xã hội </h3>
+            <div style="display: flex; gap: 15px;">
+                <a href="#"><img src="images/logo/facebook.png" style="width: 40px;" /></a>
+                <a href="#"><img src="images/logo/twitter.png" style="width: 40px;" /></a>
+                <a href="#"><img src="images/logo/youtube.png" style="width: 40px;" /></a>
+                <a href="#"><img src="images/logo/zalo.png" style="width: 40px;" /></a>
             </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
             <asp:ContentPlaceHolder ID="ContentPlaceHolder8" runat="server">
