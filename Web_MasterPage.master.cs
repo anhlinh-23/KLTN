@@ -14,7 +14,7 @@ public partial class Web_MasterPage : System.Web.UI.MasterPage
 
         if (!IsPostBack)
         {
-            //Khởi tạo giỏ hàng nếu chưa tồn tại
+            // Khởi tạo giỏ hàng nếu chưa tồn tại
             if (Session["Cart"] == null)
             {
                 List<cls_Cart> cart = new List<cls_Cart>();
