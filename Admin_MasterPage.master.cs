@@ -22,6 +22,7 @@ public partial class Admin_MasterPage : System.Web.UI.MasterPage
         }
         //ScriptManager.RegisterClientScriptBlock(Page, this.GetType(), "Alert", "alert('" + HttpContext.Current.Request.RawUrl.ToString() + "');", true);
     }
+
     protected void btnLogout_ServerClick(object sender, EventArgs e)
     {
         HttpCookie ck = new HttpCookie("UserName");
