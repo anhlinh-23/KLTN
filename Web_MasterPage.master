@@ -134,7 +134,7 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="smScriptManager" runat="server"></asp:ScriptManager>
         <div id="page">
-            <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background: beige;">
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background:repeat;">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="trang-chu">
                         <img style="margin-left: 42%; max-width: 89%;" src="images/logo/logo1.png" />
@@ -147,12 +147,13 @@
                             <!-- Các mục menu ở đây -->
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="trang-chu" href="trang-chu">Trang Chủ</a>
+
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="gioi-thieu">Giới Thiệu</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" style="color: black" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sản phẩm
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" style="color: red" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sản phẩm
                                 </a>
                                 <ul class="dropdown-menu" style="background: beige;" aria-labelledby="navbarDarkDropdownMenuLink">
                                     <li><a class="dropdown-item" href="menu">Tất cả</a></li>
@@ -165,6 +166,8 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="blog">Tin tức</a>
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" style="color: red" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sản phẩm
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="dat-ban">Đặt hàng</a>
