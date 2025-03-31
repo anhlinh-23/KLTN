@@ -153,7 +153,7 @@
                                 <a class="nav-link active" href="gioi-thieu">Giới Thiệu</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" style="color: red" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sản phẩm
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" style="color: black" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sản phẩm
                                 </a>
                                 <ul class="dropdown-menu" style="background: beige;" aria-labelledby="navbarDarkDropdownMenuLink">
                                     <li><a class="dropdown-item" href="menu">Tất cả</a></li>
@@ -166,7 +166,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="blog">Tin tức</a>
-                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" style="color: red" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sản phẩm
+<%--                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" style="color: red" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sản phẩm--%>
                                 </a>
                             </li>
                             <li class="nav-item">
