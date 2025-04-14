@@ -11,26 +11,44 @@ public partial class admin_page_module_function_module_KhoVatPham_admin_XuatHang
     private int _id;
     protected void Page_Load(object sender, EventArgs e)
     {
-        var getXuatHang = from o in db.tbOrders
-                          join ac in db.tbAccounts on o.account_id equals ac.account_id
-                          orderby o.order_id descending
+        //var getXuatHang = from o in db.tbOrders
+        //                  join ac in db.tbAccounts on o.account_id equals ac.account_id
+        //                  orderby o.order_id descending
+        //                  select new
+        //                  {
+        //                      o.order_code,
+        //                      o.order_createdate,
+        //                      o.order_tongxu,
+        //                      o.order_status,
+        //                      o.order_diachi,
+        //                      o.order_id,
+        //                      ac.account_sodienthoai,
+        //                  };
+        var getXuatHang = from us in db.tb_Users
+                          join od in db.tb_Orders on us.us_id equals od.us_id
+                          where od.order_status == "Đã xong"
+                          orderby od.order_id descending
                           select new
                           {
-                              o.order_code,
-                              o.order_createdate,
-                              o.order_tongxu,
-                              o.order_status,
-                              o.order_diachi,
-                              o.order_id,
-                              ac.account_sodienthoai,
+                              od.order_id,
+                              us.us_name,
+                              us.us_phone,
+                              us.us_email,
+                              us.us_address,
+                              od.order_status,
+                              od.order_creationdate,
+                              order_total = od.order_total + " vnđ",
+                              tongsl = (from ode in db.tb_OrderDetails
+                                        where ode.order_id == od.order_id
+                                        select ode.pr_number).Sum(),
                           };
         grvXuatHang.DataSource = getXuatHang;
         grvXuatHang.DataBind();
     }
-    protected void btnOder_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("/admin-don-hang-cua-admin");
-    }
+    //protected void btnOder_Click(object sender, EventArgs e)
+    //{
+    //    Response.Redirect("/admin-don-hang-cua-admin");
+    //}
 
     protected void btnXemOder_Click(object sender, EventArgs e)
     {

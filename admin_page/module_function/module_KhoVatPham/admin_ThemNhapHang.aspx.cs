@@ -44,11 +44,11 @@ public partial class admin_page_module_function_module_KhoVatPham_admin_ThemNhap
 
                 dtVPDaChon = (DataTable)Session["dtVPDaChon"];
                 Session["dtVPDaChon"] = null;
-                Load();
+                //Load();
             }
             else
             {
-                Load();
+                //Load();
                 var getDuLieuNhapHang = (from nh in db.tbVatPham_NhapHangs
                                          where nh.nhaphang_id == idchitiet
                                          select new
@@ -62,14 +62,31 @@ public partial class admin_page_module_function_module_KhoVatPham_admin_ThemNhap
                 txtNgayNhap.Value = getDuLieuNhapHang.nhaphang_createdate.Value.ToString("dd-MM-yyyy").Replace(' ', 'T');
                 ddlNguoiNhapHang.SelectedValue = getDuLieuNhapHang.username_id + "";
 
+                //var getDuLieuNhapHangChiteit = (from nh in db.tbVatPham_NhapHangs
+                //                                join nhct in db.tbVatPham_NhapHang_ChiTiets on nh.nhaphang_code equals nhct.nhaphang_code
+                //                                join vp in db.tbVatPhams on nhct.vatpham_id equals vp.vatpham_id
+                //                                where nh.nhaphang_id == idchitiet && nhct.hidden == true
+                //                                select new
+                //                                {
+                //                                    vp.vatpham_id,
+                //                                    vp.vatpham_name,
+                //                                    nhct.nhaphangchitiet_soluong,
+                //                                    nhct.nhaphangchitiet_dongia,
+                //                                    nhct.nhaphangchitiet_thanhtien,
+                //                                    nh.nhaphang_tongtien,
+                //                                    nhct.nhaphangchitiet_id,
+                //                                    nhct.hidden,
+                //                                });
                 var getDuLieuNhapHangChiteit = (from nh in db.tbVatPham_NhapHangs
                                                 join nhct in db.tbVatPham_NhapHang_ChiTiets on nh.nhaphang_code equals nhct.nhaphang_code
-                                                join vp in db.tbVatPhams on nhct.vatpham_id equals vp.vatpham_id
+                                                join p in db.tb_Products on nhct.vatpham_id equals p.pr_id
                                                 where nh.nhaphang_id == idchitiet && nhct.hidden == true
                                                 select new
                                                 {
-                                                    vp.vatpham_id,
-                                                    vp.vatpham_name,
+                                                    //vp.vatpham_id,
+                                                    //vp.vatpham_name,
+                                                    p.pr_id,
+                                                    p.pr_name,
                                                     nhct.nhaphangchitiet_soluong,
                                                     nhct.nhaphangchitiet_dongia,
                                                     nhct.nhaphangchitiet_thanhtien,
@@ -84,12 +101,14 @@ public partial class admin_page_module_function_module_KhoVatPham_admin_ThemNhap
                 foreach (var item in getDuLieuNhapHangChiteit)
                 {
                     DataRow row = dtVPDaChon.NewRow();
-                    var getName = (from vp in db.tbVatPhams where vp.vatpham_id == item.vatpham_id select vp);
+                    var getName = (from p in db.tb_Products where p.pr_id == item.pr_id select p);
                     if (getName.Count() > 0)
                     {
                         row["nhaphangchitiet_id"] = item.nhaphangchitiet_id;
-                        row["vatpham_id"] = item.vatpham_id;
-                        row["vatpham_name"] = getName.FirstOrDefault().vatpham_name;
+                        //row["vatpham_id"] = item.vatpham_id;
+                        //row["vatpham_name"] = getName.FirstOrDefault().vatpham_name;
+                        row["vatpham_id"] = item.pr_id;
+                        row["vatpham_name"] = getName.FirstOrDefault().pr_name;
                         row["nhaphangchitiet_soluong"] = item.nhaphangchitiet_soluong;
                         row["nhaphangchitiet_dongia"] = item.nhaphangchitiet_dongia;
                         row["nhaphangchitiet_thanhtien"] = item.nhaphangchitiet_thanhtien;
@@ -102,16 +121,25 @@ public partial class admin_page_module_function_module_KhoVatPham_admin_ThemNhap
                 rpVatPhamChiTiet.DataBind();
             }
         }
+        Load();
     }
     public void Load()
     {
-        var getVatPham = from vp in db.tbVatPhams
-                         where vp.hidden == true
-                         orderby vp.vatpham_id descending // Sắp xếp theo trường ID giảm dần
+        //var getVatPham = from vp in db.tbVatPhams
+        //                 where vp.hidden == true
+        //                 orderby vp.vatpham_id descending // Sắp xếp theo trường ID giảm dần
+        //                 select new
+        //                 {
+        //                     vp.vatpham_id,
+        //                     vp.vatpham_name,
+        //                 };
+        var getVatPham = from p in db.tb_Products
+                         //where vp.hidden == true
+                         orderby p.pr_id descending // Sắp xếp theo trường ID giảm dần
                          select new
                          {
-                             vp.vatpham_id,
-                             vp.vatpham_name,
+                             p.pr_id,
+                             p.pr_name,
                          };
         grvThemVatPham.DataSource = getVatPham;
         grvThemVatPham.DataBind();
@@ -185,9 +213,13 @@ public partial class admin_page_module_function_module_KhoVatPham_admin_ThemNhap
         if (idchitiet == 0)
         {
             int _idvatpham = Convert.ToInt32(txtvatpham_id.Value);
-            var vatpham = (from vp in db.tbVatPhams
-                           where vp.vatpham_id == _idvatpham
-                           select vp).SingleOrDefault();
+            //var vatpham = (from   vp in db.tbVatPhams
+            //               where vp.vatpham_id == _idvatpham
+            //               select vp).SingleOrDefault();
+            var vatpham = (from p in db.tb_Products
+                           where p.pr_id == _idvatpham
+                           orderby p.pr_id descending
+                              select p).SingleOrDefault();
             if (Session["dtVPDaChon"] != null)
             {
                 dtVPDaChon = (DataTable)Session["dtVPDaChon"];
@@ -200,7 +232,7 @@ public partial class admin_page_module_function_module_KhoVatPham_admin_ThemNhap
                 {
                     DataRow row = dtVPDaChon.NewRow();
                     row["vatpham_id"] = _idvatpham;
-                    row["vatpham_name"] = vatpham.vatpham_name;
+                    row["vatpham_name"] = vatpham.pr_name;
                     row["nhaphangchitiet_soluong"] = 1;
                     row["nhaphangchitiet_dongia"] = 1;
                     row["nhaphangchitiet_thanhtien"] = 1;
@@ -214,7 +246,7 @@ public partial class admin_page_module_function_module_KhoVatPham_admin_ThemNhap
                 loaddatatable();
                 DataRow row = dtVPDaChon.NewRow();
                 row["vatpham_id"] = _idvatpham;
-                row["vatpham_name"] = vatpham.vatpham_name;
+                row["vatpham_name"] = vatpham.pr_name;
                 row["nhaphangchitiet_soluong"] = 1;
                 row["nhaphangchitiet_dongia"] = 1;
                 row["nhaphangchitiet_thanhtien"] = 1;

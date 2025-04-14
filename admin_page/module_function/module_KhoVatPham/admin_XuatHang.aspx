@@ -14,7 +14,7 @@
             <h3 style="text-align: center; font-size: 28px; font-weight: bold; color: blue">Danh sách xuất hàng</h3>
             <asp:UpdatePanel ID="udButton" runat="server">
                 <ContentTemplate>
-                    <asp:Button ID="btnOder" runat="server" Text="Oder" CssClass="btn btn-primary" OnClick="btnOder_Click" />
+                  <%--  <asp:Button ID="btnOder" runat="server" Text="Oder" CssClass="btn btn-primary" OnClick="btnOder_Click" />--%>
                     <asp:Button ID="btnXemOder" runat="server" Text="Xem oder" CssClass="btn btn-primary" OnClick="btnXemOder_Click" />
                     <a href="/admin-kho-hang" class="btn btn-primary">Quay lại kho hàng</a>
                 </ContentTemplate>
@@ -24,17 +24,18 @@
                     <Columns>
                         <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="Page" VisibleIndex="0" Width="0%">
                         </dx:GridViewCommandColumn>
-                        <dx:GridViewDataColumn Caption="SĐT người oder" FieldName="account_sodienthoai" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Caption="Mã hóa đơn" FieldName="order_code" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Caption="Ngày oder" FieldName="order_createdate" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Caption="Tổng xu" FieldName="order_tongxu" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Caption="Địa chỉ" FieldName="order_diachi" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
-                        <dx:GridViewDataColumn Caption="Tình trạng" FieldName="order_status" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
+                        <dx:GridViewDataColumn Caption="SĐT người oder" FieldName="us_phone" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
+                        <%--<dx:GridViewDataColumn Caption="Mã hóa đơn" FieldName="order_code" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>--%>
+                        <dx:GridViewDataColumn Caption="Ngày oder" FieldName="order_creationdate" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
+                        <dx:GridViewDataColumn Caption="Tổng xu" FieldName="order_total" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
+                        <dx:GridViewDataColumn Caption="Địa chỉ" FieldName="us_address" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
+                        <dx:GridViewDataColumn Caption="Tổng SL" FieldName="tongsl" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
+                        <%--<dx:GridViewDataColumn Caption="Tình trạng" FieldName="order_status" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
                         <dx:GridViewDataColumn Caption="#" HeaderStyle-HorizontalAlign="Center" Width="0%">
                             <DataItemTemplate>
                                 <a href="javascript:void(0)" id="<%#Eval("order_id") %>" onclick="myThemChiTiet(<%#Eval("order_id") %>)">Xác nhận</a>
                             </DataItemTemplate>
-                        </dx:GridViewDataColumn>
+                        </dx:GridViewDataColumn>--%>
                     </Columns>
                     <%--<ClientSideEvents RowDblClick="btnChiTiet" />--%>
                     <SettingsSearchPanel Visible="true" />

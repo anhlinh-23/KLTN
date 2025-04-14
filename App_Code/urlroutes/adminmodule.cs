@@ -36,6 +36,7 @@ public class adminmodule
         list.Add("modulekhohang|admin-kho-hang|~/admin_page/module_function/module_KhoVatPham/admin_KhoHang.aspx");
         list.Add("modulexuathang|admin-xuat-hang|~/admin_page/module_function/module_KhoVatPham/admin_XuatHang.aspx");
         list.Add("modulethemnhaphang|admin-them-nhap-hang-{id}|~/admin_page/module_function/module_KhoVatPham/admin_ThemNhapHang.aspx");
+        list.Add("moduledonhangcuakhachhang|admin-don-hang-cua-khach-hang-{id}|~/admin_page/module_function/module_KhoVatPham/admin_DonHangCuaKhachHang.aspx");
         return list;
     }
 }

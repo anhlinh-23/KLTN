@@ -46,14 +46,14 @@
                 <div class="col-4">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <dx:ASPxGridView ID="grvThemVatPham" runat="server" ClientInstanceName="grvList" KeyFieldName="vatpham_id" Width="90%">
+                            <dx:ASPxGridView ID="grvThemVatPham" runat="server" ClientInstanceName="grvList" KeyFieldName="pr_id" Width="90%">
                                 <Columns>
                                     <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="Page" VisibleIndex="0" Width="0%">
                                     </dx:GridViewCommandColumn>
-                                    <dx:GridViewDataColumn Caption="Tên sản phẩm" FieldName="vatpham_name" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
+                                    <dx:GridViewDataColumn Caption="Tên sản phẩm" FieldName="pr_name" HeaderStyle-HorizontalAlign="Center" Width="0%"></dx:GridViewDataColumn>
                                     <dx:GridViewDataColumn Caption="#" HeaderStyle-HorizontalAlign="Center" Width="0%">
                                         <DataItemTemplate>
-                                            <a href="javascript:void(0)" id="<%#Eval("vatpham_id") %>" onclick="myThemChiTiet(<%#Eval("vatpham_id") %>)">Thêm</a>
+                                            <a href="javascript:void(0)" id="<%#Eval("pr_id") %>" onclick="myThemChiTiet(<%#Eval("pr_id") %>)">Thêm</a>
                                         </DataItemTemplate>
                                     </dx:GridViewDataColumn>
                                 </Columns>
