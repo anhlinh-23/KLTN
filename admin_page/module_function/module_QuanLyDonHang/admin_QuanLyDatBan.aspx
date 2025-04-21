@@ -116,13 +116,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button id="btnClosePopup" type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Thêm thực đơn</h4>
+                        <h4 class="modal-title">Thêm đơn hàng</h4>
                     </div>
                     <div class="modal-body">
                         <asp:UpdatePanel ID="udPopup" runat="server" UpdateMode="Always">
                             <ContentTemplate>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 form-control-label text-xs-right">Tên thực đơn:</label>
+                                    <label class="col-sm-2 form-control-label text-xs-right">Tên đơn hàng:</label>
                                     <div class="col-sm-10">
                                         <asp:TextBox ID="txtName" runat="server" ClientIDMode="Static" CssClass="form-control boxed"> </asp:TextBox>
                                     </div>

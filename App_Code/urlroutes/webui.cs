@@ -31,7 +31,9 @@ public class webui
         list.Add("webthucdonmon|mon-{url-san-pham}|~/web_module/module_sanphamDacBiet.aspx");
         //blog
         list.Add("webBlog|blog|~/web_module/module_Blog.aspx");
-     
+        list.Add("webBlog1|phong-cach-rieng|~/web_module/module_baiviet1.aspx");
+        list.Add("webBlog2|cac-outfit-goi-y|~/web_module/module_baiviet2.aspx");
+        list.Add("webBlog3|thong-bao|~/web_module/module_baiviet3.aspx");
         //liên hệ 
         list.Add("webLienHe|lien-he|~/web_module/module_LienHe.aspx");
         //đặt hàng 

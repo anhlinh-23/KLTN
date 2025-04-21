@@ -46,10 +46,10 @@
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="images/banner/xuan he5.png" class="d-block w-100 h-50" alt="...">
+                    <img src="images/banner/xuan he2.png" class="d-block w-100 h-50" alt="...">
                 </div>
                 <div class="carousel-item" data-bs-interval="2000">
-                    <img src="images/banner/xuan he3.png" class="d-block w-100" alt="...">
+                    <img src="images/banner/xuan he1.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
                     <img src="images/banner/xuan he4.png" class="d-block w-100" alt="...">
@@ -66,8 +66,9 @@
         </div>
 
         <div class="grid">
+
             <div class="c40 hide-on-mobile hide-on-pad hide-on-tab"></div>
-            <h2 class="title-home"><a href="san-pham-noi-bat/index.html">Sản phẩm nổi bật</a></h2>
+            <h2 class="title-home"><a href="#">Sản phẩm nổi bật</a></h2>
             <div class="c10"></div>
             <div></div>
             <div class="c20"></div>
@@ -75,18 +76,19 @@
                 <div class="flex-container">
                     <asp:Repeater runat="server" ID="rpMenu">
                         <ItemTemplate>
-                            <div class="cell-1-4 b-pro tab-cell-1-2 mobile-cell-1-2 margin-bottom-20">
+                            <div class="cell-1-5 b-pro tab-cell-1-2 mobile-cell-1-2 margin-bottom-20">
                                 <div>
-                                    <a href="<%#Eval("link") %>">
+                                    <a href="#">
                                         <img src="<%#Eval("pr_image") %>" width="100%" alt="<%#Eval("pr_name") %>" />
                                     </a>
                                 </div>
-                                <div class="product-name-home"><a href="<%#Eval("link") %>"><%#Eval("pr_name") %></a></div>
+                                <div class="product-name-home"><a href="#"><%#Eval("pr_name") %></a></div>
                                 <div class="product-price-home"><%#Eval("pr_price") %></div>
                                 <div class="c10"></div>
                                 <div align="center"><a class="btn-order-c" href="javascript:void(0)" onclick="addCart(<%#Eval("pr_id") %>)">Đặt hàng</a></div>
                                 <div class="c10"></div>
                             </div>
+
                         </ItemTemplate>
                     </asp:Repeater>
                     <div class="cell-1-4 tab-cell-1-2 mobile-cell-1-2"></div>
@@ -116,7 +118,7 @@
         <div class="anh">
             <div class="c30"></div>
             <div class="grid">
-                <h2 class="title-home"><a href="tin-tuc/index.html">Tin tức </a></h2>
+                <h2 class="title-home"><a href="#">Tin tức </a></h2>
                 <div>
                     <div style="text-align: center">
                         Hãy cùng khám phá bộ sưu tập thời trang tại AL Fashion Store để cập nhật những xu hướng mới nhất và tỏa sáng với phong cách của riêng bạn.<br>
@@ -132,7 +134,7 @@
                                 <img src="../images/banner/hinh1.png" alt="Mix đồ unisex – phong cách trung tính phù hợp cho mọi giới tính" class="image-news" width="100%"></a>
                         </div>
                         <h3 class="news-name"><a href="phong-cach-rieng">Phong cách theo cách riêng của bạn </a></h3>
-                        <div>AL Fashion Store</div>
+                       
                     </div>
                     <div class="cell-1-3 margin-bottom-20 tab-cell-1-2 mobile-cell-1-1">
                         <div>

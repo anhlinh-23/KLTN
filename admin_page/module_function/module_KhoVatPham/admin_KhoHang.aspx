@@ -34,16 +34,13 @@
                             <tr>
                                 <td><%#Container.ItemIndex+1 %></td>
                                 <td>
-                                    <%#Eval("vatpham_name") %>
+                                    <%#Eval("pr_name") %>
                                 </td>
                                 <td>
-                                   <%-- sử dụng biểu thức ba ngôi trong string.Format để nếu nó là 0 thì vẫn hiện 0--%>
                                     <%# (Convert.ToInt32(Eval("soluongton")) == 0) ? "0" : string.Format("{0:#,###}", Convert.ToInt32(Eval("soluongton"))) %>
-                                    <%--<%# string.Format("{0:#,###}", Convert.ToInt32(Eval("soluongton"))) %>--%>
-                                    <%-- <%#Eval("soluongton") %>--%>
                                 </td>
                                 <td>
-                                    <%# (Convert.ToInt32(Eval("soluongtongnhap")) == 0) ? "0" : string.Format("{0:#,###}", Convert.ToInt32(Eval("soluongtongnhap"))) %>
+                                    <%# (Convert.ToInt32(Eval("nhaphangchitiet_soluong")) == 0) ? "0" : string.Format("{0:#,###}", Convert.ToInt32(Eval("nhaphangchitiet_soluong"))) %>
                                 </td>
                                 <td>
                                     <%# (Convert.ToInt32(Eval("soluongtongxuat")) == 0) ? "0" : string.Format("{0:#,###}", Convert.ToInt32(Eval("soluongtongxuat"))) %>

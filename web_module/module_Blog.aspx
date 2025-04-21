@@ -32,7 +32,7 @@
                             <img src="../images/banner/hinh1.png" alt="Mix đồ unisex – phong cách trung tính phù hợp cho mọi giới tính " class="image-news" width="100%"></a>
                     </div>
                     <h3 class="news-name"><a href="phong-cach-rieng">Phong cách theo cách riêng của bạn </a></h3>
-                    <div>AL Fashion Store</div>
+                   
                 </div>
                 <div class="cell-1-3 margin-bottom-20 tab-cell-1-2 mobile-cell-1-1">
                     <div>

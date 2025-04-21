@@ -22,7 +22,7 @@ public partial class _Default : System.Web.UI.Page
         var getMenu3 = (from pr in db.tb_Products
                         where pr.cate_id == 3
                         orderby pr.pr_id descending
-                        select pr).Take(1);
+                        select pr).Take(2);
         getMenu3 = getMenu3.Union(getMenu2);
         var getMenu4 = (from pr in db.tb_Products
                         where pr.cate_id == 4
