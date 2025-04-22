@@ -40,8 +40,11 @@ public class webui
         list.Add("webdatban|dat-ban|~/web_module/module_Dathang.aspx");
         //giỏ hàng
         list.Add("webgiohang|gio-hang|~/web_module/module_GioHang.aspx");
+        //thanh toán
+        list.Add("webthanhtoan|thanh-toan|~/web_module/module_ThanhToan.aspx");
         //bai viết
         list.Add("webBaiViet|bai-viet|~/web_module/module_BaiViet.aspx");
+        
 
         return list;
 

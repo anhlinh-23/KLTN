@@ -97,37 +97,7 @@ public partial class web_module_module_GioHang : System.Web.UI.Page
 
     protected void btnSave_ServerClick(object sender, EventArgs e)
     {
-        try
-        {
-            tb_Order ins = new tb_Order();
-            ins.order_creationdate = DateTime.Now;
-            ins.us_id = (from u in db.tb_Users
-                         where u.us_username == Request.Cookies["User"].Value
-                         select u).FirstOrDefault().us_id;
-            ins.order_status = "Đang chờ";
-            ins.order_total = Convert.ToString(total);
-            db.tb_Orders.InsertOnSubmit(ins);
-            db.SubmitChanges();
-
-            List<cls_Cart> cart = (List<cls_Cart>)Session["Cart"];
-            foreach (var item in cart)
-            {
-                tb_OrderDetail insd = new tb_OrderDetail();
-                insd.pr_id = item.id;
-                insd.pr_pricecurrent = Convert.ToString(item.price);
-                insd.pr_number = item.number;
-                insd.order_id = (from o in db.tb_Orders orderby o.order_id descending select o).FirstOrDefault().order_id;
-                db.tb_OrderDetails.InsertOnSubmit(insd);
-                db.SubmitChanges();
-            }
-            Session["Cart"] = null;
-            //alert.alert_Success(Page, "Đặt hàng thành công", "");
-            ScriptManager.RegisterClientScriptBlock(Page, this.GetType(), "Alert", "swal('Đặt hàng thành công','','success').then(function(){window.location = '/trang-chu';})", true);
-            //Response.Redirect("/trang-chu");
-        }
-        catch
-        {
-            alert.alert_Warning(Page, "Đặt hàng thất bại", "");
-        }
+        // Chuyển sang trang thanh toán thay vì xử lý đơn hàng trực tiếp
+        Response.Redirect("/thanh-toan");
     }
 }
