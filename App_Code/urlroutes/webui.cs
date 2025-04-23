@@ -42,6 +42,7 @@ public class webui
         list.Add("webgiohang|gio-hang|~/web_module/module_GioHang.aspx");
         //thanh toán
         list.Add("webthanhtoan|thanh-toan|~/web_module/module_ThanhToan.aspx");
+        //list.Add("webthanhtoan|thanh-toan|~/web_module/test.aspx");
         //bai viết
         list.Add("webBaiViet|bai-viet|~/web_module/module_BaiViet.aspx");
         

@@ -82,9 +82,14 @@
                                         <img src="<%#Eval("pr_image") %>" width="100%" alt="<%#Eval("pr_name") %>" />
                                     </a>
                                 </div>
-                                <div class="product-name-home"><a href="#"><%#Eval("pr_name") %></a></div>
+                                <div class="product-name-home"><a href="#"><%#Eval("pr_name") %></a>
+                                    <br />
+                                     SL: <%#Eval("pr_soluong") %>
+                                </div>
                                 <div class="product-price-home"><%#Eval("pr_price") %></div>
-                                <div class="c10"></div>
+                                <div class="c10">
+                                   
+                                </div>
                                 <div align="center"><a class="btn-order-c" href="javascript:void(0)" onclick="addCart(<%#Eval("pr_id") %>)">Đặt hàng</a></div>
                                 <div class="c10"></div>
                             </div>
