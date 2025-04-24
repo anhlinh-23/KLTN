@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="content-text col-xs-5 col-xl-5">
-                <h2 class="title-product-info">Thông tin sản phẩm/h2>
+                <h2 class="title-product-info">Thông tin sản phẩm</h2>
                 <div>
                     <div style="text-align: justify">
                         <%=_Info %>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -43,6 +44,7 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                 txtName.Value = userInfo.us_name;
                 txtPhone.Value = userInfo.us_phone;
                 txtEmail.Value = userInfo.us_email;
+                txtAddress.Value = userInfo.us_address;
             }
         }
 
@@ -81,21 +83,24 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
             order.order_status = "Đang chờ xử lý";
             order.order_total = Convert.ToString(total);
 
-
-            //// Add payment method
-            //if (banking.Checked)
-            //{
-            //    order.order_payment_method = "Chuyển khoản ngân hàng";
-            //}
-            //else
-            //{
-            //    order.order_payment_method = "Thanh toán khi nhận hàng (COD)";
-            //}
+            // Add payment method
+            if (vnpay.Checked)
+            {
+                order.order_payment_method = "Thanh toán qua VNPAY";
+            }
+            else if (vnpay.Checked)
+            {
+                order.order_payment_method = "Chuyển khoản ngân hàng";
+            }
+            else
+            {
+                order.order_payment_method = "Thanh toán khi nhận hàng (COD)";
+            }
 
             // Add shipping info
-            //order.order_diachi = txtAddress.Value;
-            //order.order_phone = txtPhone.Value;
-            //order.order_note = txtNote.Value;
+            order.order_address = txtAddress.Value;
+            order.order_phone = txtPhone.Value;
+            order.order_note = txtNote.Value;
 
             // Save order to database
             db.tb_Orders.InsertOnSubmit(order);
@@ -117,7 +122,15 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                 db.SubmitChanges();
             }
 
-            // Clear cart
+            // If VNPAY selected, redirect to VNPAY payment gateway
+            if (vnpay.Checked)
+            {
+                Session["OrderId"] = orderId;
+                RedirectToVnPayGateway(orderId);
+                return;
+            }
+
+            // Clear cart for non-VNPay transactions
             Session["Cart"] = null;
 
             // Show success message and redirect
@@ -129,5 +142,39 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
         {
             alert.alert_Warning(Page, "Đặt hàng thất bại: " + ex.Message, "");
         }
+    }
+
+    private void RedirectToVnPayGateway(int orderId)
+    {
+        // Get VNPay settings from Web.config
+        string vnp_Returnurl = ConfigurationManager.AppSettings["vnp_Returnurl"];
+        string vnp_Url = ConfigurationManager.AppSettings["vnp_Url"];
+        string vnp_TmnCode = ConfigurationManager.AppSettings["vnp_TmnCode"];
+        string vnp_HashSecret = ConfigurationManager.AppSettings["vnp_HashSecret"];
+        
+        // Create VNPay Library instance
+        VnPayLibrary vnpay = new VnPayLibrary();
+        
+        // Set request parameters
+        vnpay.AddRequestData("vnp_Version", "2.1.0");
+        vnpay.AddRequestData("vnp_Command", "pay");
+        vnpay.AddRequestData("vnp_TmnCode", vnp_TmnCode);
+        vnpay.AddRequestData("vnp_Amount", (total * 100).ToString()); // Amount in VND, convert to smallest currency unit (100 = 1 VND)
+        
+        vnpay.AddRequestData("vnp_CreateDate", DateTime.Now.ToString("yyyyMMddHHmmss"));
+        vnpay.AddRequestData("vnp_CurrCode", "VND");
+        vnpay.AddRequestData("vnp_IpAddr", Utils.GetIpAddress());
+        vnpay.AddRequestData("vnp_Locale", "vn");
+        
+        // Generate a unique order code
+        string orderCode = DateTime.Now.Ticks.ToString();
+        vnpay.AddRequestData("vnp_OrderInfo", "Thanh toan don hang " + orderId);
+        vnpay.AddRequestData("vnp_OrderType", "fashion"); // Order type
+        vnpay.AddRequestData("vnp_ReturnUrl", vnp_Returnurl);
+        vnpay.AddRequestData("vnp_TxnRef", orderId.ToString()); // Your order code
+        
+        // Create payment URL and redirect
+        string paymentUrl = vnpay.CreateRequestUrl(vnp_Url, vnp_HashSecret);
+        Response.Redirect(paymentUrl);
     }
 }

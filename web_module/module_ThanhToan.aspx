@@ -9,7 +9,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder4" runat="Server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="ContentPlaceHolder5" runat="Server">
-      <style>
+    <style>
         .box-form-thanhtoan {
             background: #fff;
             padding: 20px;
@@ -17,7 +17,7 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             margin-bottom: 20px;
         }
-        
+
         .form-title {
             font-size: 18px;
             font-weight: bold;
@@ -25,76 +25,76 @@
             padding-bottom: 10px;
             border-bottom: 1px solid #eee;
         }
-        
+
         .item {
             margin-bottom: 15px;
         }
-        
-        .item label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .item input[type="text"],
-        .item input[type="email"],
-        .item textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        
-        .item textarea {
-            height: 80px;
-            resize: vertical;
-        }
-        
+
+            .item label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 500;
+            }
+
+            .item input[type="text"],
+            .item input[type="email"],
+            .item textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+
+            .item textarea {
+                height: 80px;
+                resize: vertical;
+            }
+
         .required {
             color: red;
         }
-        
+
         .order-table {
             width: 100%;
             border-collapse: collapse;
         }
-        
-        .order-table th,
-        .order-table td {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-            text-align: left;
-        }
-        
+
+            .order-table th,
+            .order-table td {
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+                text-align: left;
+            }
+
         .total-row {
             background-color: #f9f9f9;
         }
-        
+
         .payment-methods {
             margin-top: 20px;
         }
-        
+
         .payment-option {
             margin-bottom: 10px;
         }
-        
-        .payment-option label {
-            margin-left: 5px;
-            cursor: pointer;
-        }
-        
+
+            .payment-option label {
+                margin-left: 5px;
+                cursor: pointer;
+            }
+
         .banking-info {
             background-color: #f9f9f9;
             padding: 15px;
             margin-top: 10px;
             border-radius: 4px;
         }
-        
-        .banking-info p {
-            margin: 5px 0;
-        }
-        
+
+            .banking-info p {
+                margin: 5px 0;
+            }
+
         .btn-thanhtoan {
             display: block;
             width: 100%;
@@ -108,16 +108,16 @@
             text-transform: uppercase;
             transition: background-color 0.3s;
         }
-        
-        .btn-thanhtoan:hover {
-            background-color: #c19040;
-        }
-        
+
+            .btn-thanhtoan:hover {
+                background-color: #c19040;
+            }
+
         @media (max-width: 768px) {
             .flex-container {
                 flex-direction: column;
             }
-            
+
             .cell-1-2 {
                 width: 100%;
                 margin-bottom: 20px;
@@ -207,15 +207,16 @@
                                 <label for="cod">Thanh toán khi nhận hàng (COD)</label>
                             </div>
                             <div class="payment-option">
-                                <input type="radio" id="banking" name="payment_method" value="banking" runat="server" />
-                                <label for="banking">Chuyển khoản ngân hàng</label>
+                                <input
+                                    type="radio"
+                                    id="vnpay"
+                                    name="payment_method"
+                                    runat="server"
+                                    value="vnpay" />
+                                <label for="vnpay">Thanh toán qua VNPAY</label>
+
                             </div>
-                            <div id="bankingInfo" class="banking-info" style="display: none;">
-                                <p>Số tài khoản: <strong>1234567890</strong></p>
-                                <p>Chủ tài khoản: <strong>AL Fashion Store</strong></p>
-                                <p>Ngân hàng: <strong>Vietcombank</strong></p>
-                                <p>Nội dung: <strong>Thanh toán đơn hàng [Họ tên]</strong></p>
-                            </div>
+
                         </div>
                     </div>
                     <div class="c20"></div>
@@ -228,11 +229,11 @@
         <div class="c30"></div>
     </div>
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const codRadio = document.getElementById('<%= cod.ClientID %>');
-            const bankingRadio = document.getElementById('<%= banking.ClientID %>');
+            const bankingRadio = document.getElementById('<%= vnpay.ClientID %>');
             const bankingInfo = document.getElementById('bankingInfo');
-            
+
             function updateBankingInfo() {
                 if (bankingRadio.checked) {
                     bankingInfo.style.display = 'block';
@@ -240,10 +241,10 @@
                     bankingInfo.style.display = 'none';
                 }
             }
-            
+
             codRadio.addEventListener('change', updateBankingInfo);
             bankingRadio.addEventListener('change', updateBankingInfo);
-            
+
             // Initial check
             updateBankingInfo();
         });
