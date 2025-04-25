@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Web_MasterPage.master" AutoEventWireup="true" CodeFile="vnpay_return.aspx.cs" Inherits="web_module_module_ThanhToan" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Web_MasterPage.master" AutoEventWireup="true" CodeFile="vnpay_return1.aspx.cs" Inherits="web_module_vnpay_return" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -145,5 +145,4 @@
 <asp:Content ID="Content7" ContentPlaceHolderID="ContentPlaceHolder7" runat="Server">
 </asp:Content>
 <asp:Content ID="Content8" ContentPlaceHolderID="ContentPlaceHolder8" runat="Server">
-</asp:Content>
-
+</asp:Content> 

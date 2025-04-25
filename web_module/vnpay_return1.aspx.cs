@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -6,21 +6,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class web_module_module_ThanhToan : System.Web.UI.Page
+public partial class web_module_vnpay_return : System.Web.UI.Page
 {
     dbcsdlDataContext db = new dbcsdlDataContext();
-    public int total = 0;
     cls_Alert alert = new cls_Alert();
-
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             // Get VNPAY response data
             string vnp_HashSecret = ConfigurationManager.AppSettings["vnp_HashSecret"]; // Secret key
-
+            
             VnPayLibrary vnpay = new VnPayLibrary();
-
+            
             // Fill response data
             foreach (string key in Request.QueryString.Keys)
             {
@@ -30,7 +29,7 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                     vnpay.AddResponseData(key, Request.QueryString[key]);
                 }
             }
-
+            
             // Get data from response
             string vnp_ResponseCode = vnpay.GetResponseData("vnp_ResponseCode");
             string vnp_TransactionStatus = vnpay.GetResponseData("vnp_TransactionStatus");
@@ -40,7 +39,7 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
             string vnp_Amount = vnpay.GetResponseData("vnp_Amount");
             string vnp_PayDate = vnpay.GetResponseData("vnp_PayDate");
             string vnp_TxnRef = vnpay.GetResponseData("vnp_TxnRef");
-
+            
             // Convert order ID from TxnRef
             int orderId = 0;
             if (!string.IsNullOrEmpty(vnp_TxnRef))
@@ -48,13 +47,13 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                 // Use Int32.TryParse to avoid exceptions if the string is not a valid integer
                 Int32.TryParse(vnp_TxnRef, out orderId);
             }
-
+            
             bool isValidSignature = false;
             if (!string.IsNullOrEmpty(Request.QueryString["vnp_SecureHash"]))
             {
                 isValidSignature = vnpay.ValidateSignature(Request.QueryString["vnp_SecureHash"], vnp_HashSecret);
             }
-
+            
             if (isValidSignature)
             {
                 // Check payment status
@@ -64,10 +63,10 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                     iconSuccess.Visible = true;
                     resultTitle.InnerText = "Thanh toán thành công";
                     resultMessage.InnerText = "Đơn hàng của bạn đã được thanh toán thành công qua VNPAY.";
-
+                    
                     // Set payment details
                     orderCode.InnerText = vnp_TxnRef;
-
+                    
                     // Format payment amount (dividing by 100 since amount is in the smallest currency unit)
                     double amountDouble = 0;
                     if (!string.IsNullOrEmpty(vnp_Amount))
@@ -76,10 +75,10 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                         amountDouble = amountDouble / 100;
                     }
                     amount.InnerText = string.Format("{0:N0} VNĐ", amountDouble);
-
+                    
                     bankCode.InnerText = vnp_BankCode;
                     transactionId.InnerText = vnp_TransactionNo;
-
+                    
                     // Format payment time
                     DateTime payDate = DateTime.Now;
                     if (!string.IsNullOrEmpty(vnp_PayDate))
@@ -91,7 +90,7 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                         catch { }
                     }
                     paymentTime.InnerText = payDate.ToString("dd/MM/yyyy HH:mm:ss");
-
+                    
                     // Update order status in the database
                     try
                     {
@@ -102,7 +101,7 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                             {
                                 order.order_status = "Đã thanh toán";
                                 db.SubmitChanges();
-
+                                
                                 // Clear cart
                                 Session["Cart"] = null;
                             }
@@ -120,10 +119,10 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                     iconFailed.Visible = true;
                     resultTitle.InnerText = "Thanh toán không thành công";
                     resultMessage.InnerText = "Giao dịch đã bị hủy hoặc xảy ra lỗi trong quá trình thanh toán.";
-
+                    
                     // Set payment details
                     orderCode.InnerText = vnp_TxnRef;
-
+                    
                     // Format payment amount (dividing by 100 since amount is in the smallest currency unit)
                     double amountDouble = 0;
                     if (!string.IsNullOrEmpty(vnp_Amount))
@@ -132,10 +131,10 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                         amountDouble = amountDouble / 100;
                     }
                     amount.InnerText = string.Format("{0:N0} VNĐ", amountDouble);
-
+                    
                     bankCode.InnerText = vnp_BankCode;
                     transactionId.InnerText = vnp_TransactionNo;
-
+                    
                     // Format payment time
                     DateTime payDate = DateTime.Now;
                     if (!string.IsNullOrEmpty(vnp_PayDate))
@@ -147,7 +146,7 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                         catch { }
                     }
                     paymentTime.InnerText = payDate.ToString("dd/MM/yyyy HH:mm:ss");
-
+                    
                     // Update order status in the database
                     try
                     {
@@ -177,4 +176,4 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
             }
         }
     }
-}
+} 

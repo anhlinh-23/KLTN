@@ -138,7 +138,7 @@
         <div id="page">
             <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background: beige;">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="trang-chu">
+                    <a class="navbar-brand" href="/trang-chu">
                         <img style="margin-left: 42%; max-width: 89%;" src="/images/logo/logo1.png" />
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -181,6 +181,7 @@
                         <table class="order-table">
                             <tr>
                                 <th>Sản phẩm</th>
+                                <th>Sản phẩm</th>
                                 <th>Số lượng</th>
                                 <th>Thành tiền</th>
                             </tr>
