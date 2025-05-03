@@ -169,7 +169,7 @@
                                 <a class="nav-link active" href="blog">Tin tức</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="dat-ban">Đặt hàng</a>
+                                <a class="nav-link active" href="dat-ban">Hẹn xem hàng tại shop</a>
                             </li>
                         </ul>
                         <div style="display: flex; justify-items: center">

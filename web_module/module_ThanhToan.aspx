@@ -246,7 +246,7 @@
             codRadio.addEventListener('change', updateBankingInfo);
             bankingRadio.addEventListener('change', updateBankingInfo);
 
-            // Initial check
+            // Initial checkf
             updateBankingInfo();
         });
     </script>

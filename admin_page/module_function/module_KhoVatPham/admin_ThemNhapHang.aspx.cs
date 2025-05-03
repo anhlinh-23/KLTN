@@ -337,7 +337,7 @@ public partial class admin_page_module_function_module_KhoVatPham_admin_ThemNhap
                     {
                         tongtien = Convert.ToDecimal(sumObject);
                         txtTongTien.InnerText = tongtien.ToString("#,##0");
-                        //txtTongTien.InnerText = Convert.ToString(tongtien);
+                        txtTongTien.InnerText = Convert.ToString(tongtien);
                     }
                     rpVatPhamChiTiet.DataSource = dtVPDaChon;
                     rpVatPhamChiTiet.DataBind();

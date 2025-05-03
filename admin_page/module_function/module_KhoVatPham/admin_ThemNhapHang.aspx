@@ -33,7 +33,7 @@
                 }).then(function (value) {
                     if (value == true) {
                         document.getElementById("<%= txt_ID.ClientID%>").value = id;
-                        var xoa = document.getElementById("<%= btnXoa.ClientID%>");
+<%--                        var xoa = document.getElementById("<%= btnXoa.ClientID%>");--%>
                         xoa.click();
                     }
                 });
@@ -147,14 +147,15 @@
                                 <a href="/admin-nhap-hang" class="btn btn-primary">Quay lại</a>
                             </div>
                             <div>
-                                <input id="txt_ID" type="text" runat="server" />
-                                <input id="txt_SoLuong" type="text" runat="server" />
-                                <input id="txt_DonGia" type="text" runat="server" />
-                                <input id="txt_ThanhTien" type="text" runat="server" />
-                                <a href="javascript:void(0)" id="NhapHangChiTiet" type="button" runat="server" onserverclick="NhapHangChiTiet_ServerClick">Update</a>
+                                <input id="txt_ID" type="text" runat="server" style="display: none;" />
+                                <input id="txt_SoLuong" type="text" runat="server" style="display: none;" />
+                                <input id="txt_DonGia" type="text" runat="server" style="display: none;" />
+                                <input id="txt_ThanhTien" type="text" runat="server" style="display: none;" />
+
+                                <a href="javascript:void(0)" id="NhapHangChiTiet" style="display: none;" type="button" runat="server" onserverclick="NhapHangChiTiet_ServerClick ">Update</a>
                                 <%--nút xóa--%>
-                                <a href="javascript:void(0)" id="btnXoa" type="button" runat="server" onserverclick="btnXoa_ServerClick">Xóa</a>
                             </div>
+
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
