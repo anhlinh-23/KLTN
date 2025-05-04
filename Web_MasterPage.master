@@ -8,8 +8,8 @@
     <title>Thời Trang Nữ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-   <%-- <link rel="stylesheet" type="text/css" href="../css/font.css" />--%>
-    
+    <%-- <link rel="stylesheet" type="text/css" href="../css/font.css" />--%>
+
     <link href="css/grid.css" rel="stylesheet" />
     <%--<link rel="stylesheet" type="text/css" href="../css/style.css" />--%>
     <link href="css/style.css" rel="stylesheet" />
@@ -147,30 +147,36 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                             <!-- Các mục menu ở đây -->
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="trang-chu" href="trang-chu">Trang Chủ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="gioi-thieu">Giới Thiệu</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" style="color: black" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sản phẩm
-                                </a>
-                                <ul class="dropdown-menu" style="background: beige;" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="menu">Tất cả</a></li>
-                                    <asp:Repeater runat="server" ID="rpMenu">
-                                        <ItemTemplate>
-                                            <li><a class="dropdown-item" href="nhom-<%#Eval("link") %>"><%#Eval("cate_name") %></a></li>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="blog">Tin tức</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="dat-ban">Hẹn xem hàng tại shop</a>
-                            </li>
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="trang-chu"><b>Trang Chủ</b></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="gioi-thieu"><b>Giới Thiệu</b>
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false"><b>Sản phẩm</b>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #f5f5dc;">
+                                        <li><a class="dropdown-item" href="menu"><b><h5>Tất cả</h5>
+                                                                                 </b></a></li>
+                                        <asp:Repeater runat="server" ID="rpMenu">
+                                            <ItemTemplate>
+                                                <li><a class="dropdown-item" href="nhom-<%# Eval("link") %>"><%# Eval("cate_name") %></a></li>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="blog"><b>Tin Tức</b></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="dat-ban"><b>Hẹn Xem Hàng Tại Shop</b></a>
+                                </li>
+                            </ul>
+
                         </ul>
                         <div style="display: flex; justify-items: center">
                             <div class="cart-icon">

@@ -76,7 +76,7 @@
                 <div class="flex-container">
                     <asp:Repeater runat="server" ID="rpMenu">
                         <ItemTemplate>
-                            <div class="cell-1-5 b-pro tab-cell-1-2 mobile-cell-1-2 margin-bottom-20">
+                            <div class="cell-1-4 b-pro tab-cell-1-2 mobile-cell-1-2 margin-bottom-20">
                                 <div>
                                     <a href="#">
                                         <img src="<%#Eval("pr_image") %>" width="100%" alt="<%#Eval("pr_name") %>" />
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="product-name-home"><a href="#"><%#Eval("pr_name") %></a>
                                     <br />
-                                     SL: <%#Eval("pr_soluong") %>
+                                    <%-- SL: <%#Eval("pr_soluong") %>--%>
                                 </div>
                                 <div class="product-price-home"><%#Eval("pr_price") %></div>
                                 <div class="c10">

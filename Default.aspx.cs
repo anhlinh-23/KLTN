@@ -15,7 +15,7 @@ public partial class _Default : System.Web.UI.Page
                         orderby pr.pr_id descending
                         select pr).Take(1);
         var getMenu2 = (from pr in db.tb_Products
-                        where pr.cate_id == 2
+                        where pr.cate_id == 1
                         orderby pr.pr_id descending
                         select pr).Take(1);
         getMenu2 = getMenu2.Union(getMenu1);
