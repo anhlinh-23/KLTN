@@ -20,13 +20,17 @@
 - Mở “Visual Studio 2019”
 - Chọn “File → Open → Web Site”
 - Trỏ đến thư mục dự án (nơi chứa các file `.aspx` và `Web.config`)
-
 ### Bước 2: Kết nối cơ sở dữ liệu
-- Mở “SQL Server Management Studio”
-- Attach file cơ sở dữ liệu nếu có (`.mdf`) từ thư mục `App_Data`
+- Mở SQL Server Explorer (menu View → Server Explorer).
+    Mở kết nối đến SQL Server chứa database bạn đã attach.
+    Nếu chưa có kết nối, nhấn chuột phải vào Data Connections → Add Connection...
+    Chọn SQL Server, đăng nhập và chọn database đã attach.
+    Mở rộng danh sách Tables trong database.
+    Kéo bảng (ví dụ: Products, Users, Orders...) vào vùng thiết kế của file .dbml.
 - Cập nhật chuỗi kết nối trong `Web.config` nếu cần
-### Bước 3: Chạy project
-- Nhấn `Ctrl + F5` hoặc bấm nút “Start” để chạy dự án
+### Bước 3: Thiết lập trang khởi động
+- Trong Solution Explorer, chuột phải vào Default.aspx → Chọn View in browser
+- Trình duyệt sẽ mở và hiển thị giao diện trang web
 ## Tài khoản mẫu
 ### Người dùng
 - Tài khoản: linh123
