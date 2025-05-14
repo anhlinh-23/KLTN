@@ -48,6 +48,16 @@ public partial class web_module_module_GioHang : System.Web.UI.Page
 
         if (existingProduct != null)
         {
+            // Lấy số lượng tồn kho thực tế
+            int stock = (from sl in db.tbVatPham_NhapHang_ChiTiets
+                         where sl.vatpham_id == existingProduct.id
+                         select sl.nhaphangchitiet_soluong).Sum() ?? 0;
+
+            if (existingProduct.number + 1 > stock)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", string.Format("alert('Số lượng vượt quá số lượng còn lại ({0}).');", stock), true);
+                return;
+            }
             existingProduct.number += 1;
             existingProduct.total = existingProduct.number * existingProduct.price;
         }

@@ -49,7 +49,7 @@
     </script>
     <div class="card card-block">
         <center style="font-size: 50px">
-            <p>Quản lý tài khoảng nhân viên</p>
+            <p>Quản lý tài khoản nhân viên</p>
         </center>
         <div class="form-group row">
             <div class="col-sm-10">

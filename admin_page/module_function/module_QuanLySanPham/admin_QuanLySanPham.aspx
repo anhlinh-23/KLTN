@@ -175,12 +175,13 @@
                                                 <asp:TextBox ID="txtKeywords" runat="server" ClientIDMode="Static" CssClass="form-control boxed"> </asp:TextBox>
                                             </div>
                                         </div>
-                                    <%--    <div class="form-group row">
-                                            <label class="col-sm-2 form-control-label text-xs-right">Mô Tả Seo:</label>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 form-control-label text-xs-right">Tình trạng:</label>
                                             <div class="col-sm-8">
-                                                <asp:TextBox ID="txtDescription" runat="server" ClientIDMode="Static" CssClass="form-control boxed"> </asp:TextBox>
+                                                <asp:RadioButton ID="rdoHet" runat="server" GroupName="TinhTrang" Text="Hết" />
+                                                <asp:RadioButton ID="rdoCon" runat="server" GroupName="TinhTrang" Text="Còn" />
                                             </div>
-                                        </div>--%>
+                                        </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 form-control-label text-xs-right">Url thân thiện:</label>
                                             <div class="col-sm-8">

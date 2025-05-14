@@ -36,7 +36,7 @@
                 <div class="c10"></div>
                 <div>
                     <div style="text-align: center">
-                        Khám phá ngay những mẫu quần áo nữ thời trang tạiAL Fashion Store để cập nhật xu hướng mới nhất và khẳng định phong cách riêng của bạn!"<br>
+                        Khám phá ngay những mẫu quần áo nữ thời trang tại AL Fashion Store để cập nhật xu hướng mới nhất và khẳng định phong cách riêng của bạn!"<br>
                         <br>
                         <span style="color: #d5a34c"><span style="font-size: 18px">
                             <strong>AL Fashion - Cập Nhật Xu Hướng Mới Nhất</strong></span></span>

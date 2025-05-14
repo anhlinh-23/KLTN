@@ -14,12 +14,26 @@ public partial class web_module_module_BunBoChiTiet : System.Web.UI.Page
         string url = RouteData.Values["url-san-pham"].ToString();
         var getData = from pr in db.tb_Products
                       where pr.link == url
-                      select pr;
+                      select new
+                      {
+                          pr.pr_id,
+                          pr.pr_name,
+                          pr.pr_price,
+                          pr.pr_image,
+                          pr.pr_content,
+                          pr.link,
+                          pr.pr_information,
+                          pr.cate_id,
+                          pr.pr_status,
+                          pr_soluong = (from sl in db.tbVatPham_NhapHang_ChiTiets
+                                        where sl.vatpham_id == pr.pr_id
+                                        select sl.nhaphangchitiet_soluong).Sum() ?? 0
+                      };
         rpChiTiet.DataSource = getData;
         rpChiTiet.DataBind();
         var getCate = (from cate in db.tb_Categories
-                      where cate.cate_id == getData.FirstOrDefault().cate_id
-                      select cate).FirstOrDefault();
+                       where cate.cate_id == getData.FirstOrDefault().cate_id
+                       select cate).FirstOrDefault();
         _Name = getCate.cate_name;
         _Info = getData.FirstOrDefault().pr_information;
         _Link = getCate.link;
@@ -33,25 +47,69 @@ public partial class web_module_module_BunBoChiTiet : System.Web.UI.Page
         }
         else
         {
-            cls_Cart _cart = new cls_Cart
+            int productId = Convert.ToInt32(txtId.Value);
+            int requestedQuantity;
+
+            if (!int.TryParse(txtQuantity.Value, out requestedQuantity) || requestedQuantity < 1)
             {
-                id = Convert.ToInt32(txtId.Value),
-                number = 1,
-                name = (from pr in db.tb_Products
-                        where pr.pr_id == Convert.ToInt32(txtId.Value)
-                        select pr).FirstOrDefault().pr_name,
-                image = (from pr in db.tb_Products
-                         where pr.pr_id == Convert.ToInt32(txtId.Value)
-                         select pr).FirstOrDefault().pr_image,
-                total = Convert.ToInt32((from pr in db.tb_Products
-                                         where pr.pr_id == Convert.ToInt32(txtId.Value)
-                                         select pr).FirstOrDefault().pr_price),
-                price = Convert.ToInt32((from pr in db.tb_Products
-                                         where pr.pr_id == Convert.ToInt32(txtId.Value)
-                                         select pr).FirstOrDefault().pr_price),
-            };
-            List<cls_Cart> cart = (List<cls_Cart>)Session["Cart"];
-            cart.Add(_cart);
+                // Handle invalid quantity format or less than 1
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Số lượng không hợp lệ.');", true);
+                return;
+            }
+
+            var product = (from pr in db.tb_Products
+                           where pr.pr_id == productId
+                           select new
+                           {
+                               pr.pr_name,
+                               pr.pr_image,
+                               pr.pr_price,
+                               pr_soluong = (from sl in db.tbVatPham_NhapHang_ChiTiets
+                                             where sl.vatpham_id == pr.pr_id
+                                             select sl.nhaphangchitiet_soluong).Sum() ?? 0
+                           }).FirstOrDefault();
+
+            if (product == null)
+            {
+                // Handle product not found (though unlikely if id comes from the page)
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Sản phẩm không tìm thấy.');", true);
+                return;
+            }
+
+            List<cls_Cart> cart = Session["Cart"] as List<cls_Cart>;
+            if (cart == null)
+            {
+                cart = new List<cls_Cart>();
+            }
+
+            var existingCartItem = cart.FirstOrDefault(x => x.id == productId);
+            int currentCartQuantity = existingCartItem != null ? existingCartItem.number : 0;
+            int newTotalQuantity = currentCartQuantity + requestedQuantity;
+
+            if (newTotalQuantity > product.pr_soluong)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", string.Format("alert('Tổng số lượng trong giỏ vượt quá số lượng còn lại ({0}).');", product.pr_soluong), true);
+                return;
+            }
+
+            if (existingCartItem != null)
+            {
+                existingCartItem.number = newTotalQuantity;
+                existingCartItem.total = Convert.ToInt32(Convert.ToDecimal(product.pr_price) * newTotalQuantity);
+            }
+            else
+            {
+                cls_Cart _cart = new cls_Cart
+                {
+                    id = productId,
+                    number = requestedQuantity,
+                    name = product.pr_name,
+                    image = product.pr_image,
+                    total = Convert.ToInt32(Convert.ToDecimal(product.pr_price) * requestedQuantity),
+                    price = Convert.ToInt32(product.pr_price),
+                };
+                cart.Add(_cart);
+            }
             Session["Cart"] = cart;
             Response.Redirect("/gio-hang");
         }

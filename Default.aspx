@@ -33,6 +33,9 @@
             margin: 0 auto;
             position: relativ;
         }
+        .box-about-home {
+            background-image: url(http://localhost:51715/images/logo/tranh-ve-hoa.jpg)
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
@@ -77,23 +80,22 @@
                     <asp:Repeater runat="server" ID="rpMenu">
                         <ItemTemplate>
                             <div class="cell-1-4 b-pro tab-cell-1-2 mobile-cell-1-2 margin-bottom-20">
-                                <div>
-                                    <a href="#">
-                                        <img src="<%#Eval("pr_image") %>" width="100%" alt="<%#Eval("pr_name") %>" />
-                                    </a>
-                                </div>
-                                <div class="product-name-home"><a href="#"><%#Eval("pr_name") %></a>
-                                    <br />
-                                    <%-- SL: <%#Eval("pr_soluong") %>--%>
-                                </div>
-                                <div class="product-price-home"><%#Eval("pr_price") %></div>
-                                <div class="c10">
-                                   
-                                </div>
+                                <a href='mon-<%#Eval("link") %>' style="text-decoration: none; color: inherit;">
+                                    <div>
+                                        <img src='<%#Eval("pr_image") %>' width="100%" alt='<%#Eval("pr_name") %>' />
+                                    </div>
+                                    <div class="product-name-home">
+                                        <%#Eval("pr_name") %>
+                                        <br />
+                                        <%-- SL: <%#Eval("pr_soluong") %>--%>
+                                    </div>
+                                    <div class="product-price-home"><%#Eval("pr_price") %></div>
+                                    <div class="c10">
+                                    </div>
+                                </a>
                                 <div align="center"><a class="btn-order-c" href="javascript:void(0)" onclick="addCart(<%#Eval("pr_id") %>)">Đặt hàng</a></div>
                                 <div class="c10"></div>
                             </div>
-
                         </ItemTemplate>
                     </asp:Repeater>
                     <div class="cell-1-4 tab-cell-1-2 mobile-cell-1-2"></div>

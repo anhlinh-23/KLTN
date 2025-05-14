@@ -28,14 +28,15 @@ public partial class _Default : System.Web.UI.Page
                         where pr.cate_id == 4
                         orderby pr.pr_id descending
                         select pr).Take(1);
-        var listProduct = getMenu4.Union(getMenu3).Select(x=>new { 
+        var listProduct = getMenu4.Union(getMenu3).Select(x => new {
             x.pr_id,
             x.pr_name,
             x.pr_price,
             x.pr_image,
+            x.link,
             pr_soluong = (from sl in db.tbVatPham_NhapHang_ChiTiets
-                         where sl.vatpham_id == x.pr_id
-                         select sl.nhaphangchitiet_soluong).Sum()??0
+                          where sl.vatpham_id == x.pr_id
+                          select sl.nhaphangchitiet_soluong).Sum() ?? 0
         });
         rpMenu.DataSource = listProduct;
         rpMenu.DataBind();

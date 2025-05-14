@@ -84,7 +84,8 @@ public partial class admin_page_module_function_module_QuanLySanPham_admin_QuanL
 						  pr._description,
 						  pr._keywords,
 						  pr.pr_content,
-						  pr.link
+						  pr.link,
+						  pr.pr_status
 					  };
 		txtName.Text = getData.FirstOrDefault().pr_name;
 		txtKeywords.Text = getData.FirstOrDefault()._keywords;
@@ -95,6 +96,10 @@ public partial class admin_page_module_function_module_QuanLySanPham_admin_QuanL
 		txtPrice.Text = getData.FirstOrDefault().pr_price;
 		ddlCate.Text = getData.FirstOrDefault().cate_name;
 		txtContent.Text = getData.FirstOrDefault().pr_content;
+		// Set radio button theo tình trạng
+		string status = getData.FirstOrDefault().pr_status;
+		rdoHet.Checked = status == "Hết";
+		rdoCon.Checked = status == "Còn";
 		ScriptManager.RegisterClientScriptBlock(Page, this.GetType(), "Detail", "popupControl.Show();", true);
 	}
 
@@ -153,7 +158,7 @@ public partial class admin_page_module_function_module_QuanLySanPham_admin_QuanL
 			insert.pr_information = edtnoidung.Html;
 			insert.cate_id = Convert.ToInt32(ddlCate.Value);
 			insert.pr_image = image;
-			insert.pr_status = "Còn";
+			insert.pr_status = rdoHet.Checked ? "Hết" : "Còn";
 			db.tb_Products.InsertOnSubmit(insert);
 			try
 			{
@@ -196,6 +201,7 @@ public partial class admin_page_module_function_module_QuanLySanPham_admin_QuanL
 			{
 				update.pr_image = image;
 			}
+			update.pr_status = rdoHet.Checked ? "Hết" : "Còn";
 			try
 			{
 				db.SubmitChanges();

@@ -1,6 +1,28 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Web_MasterPage.master" AutoEventWireup="true" CodeFile="module_Sanpham.aspx.cs" Inherits="web_module_module_BunHue" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style>
+            .product-out-of-stock {
+            opacity: 0.5;
+            filter: grayscale(50%);
+            pointer-events: none;
+            position: relative;
+        }
+        
+        .product-out-of-stock::after {
+            content: "Hết hàng";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            z-index: 1;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 </asp:Content>
@@ -35,7 +57,6 @@
                             <div class="product-name-home"><a href="#"><%#Eval("pr_name") %></a></div>
                             <div class="product-price-home"><%#Eval("pr_price") %> đ</div>
                             <div class="c10"></div>
-                           
                             <div class="c10"></div>
                         </div>
                     </ItemTemplate>

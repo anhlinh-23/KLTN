@@ -41,7 +41,6 @@
                             <p style="text-align: center">Chúng tôi tin rằng thời trang không chỉ đẹp mà còn phải thoải mái. Mỗi sản phẩm tại AL Fashion Store đều được lựa chọn kỹ lưỡng, từ chất liệu mềm mại, thoáng mát đến từng đường may chỉn chu, đảm bảo mang lại trải nghiệm tốt nhất cho khách hàng.</p>
 
                             <p style="text-align: center">
-                              <%--  <img alt="" src="/uploaded/gioi-thieu/gioithieu1.png">--%>
                             </p>
 
                             <p style="text-align: center"> Lấy cảm hứng từ vẻ đẹp hiện đại pha lẫn một chút cổ điển, chúng tôi mang đến những mẫu thiết kế vừa nữ tính, dịu dàng, vừa cá tính, độc đáo. Tại AL Fashion Store, bạn có thể tìm thấy mọi phong cách, từ trang phục dạo phố, công sở đến những bộ cánh lộng lẫy cho những buổi tiệc đặc biệt.</p>

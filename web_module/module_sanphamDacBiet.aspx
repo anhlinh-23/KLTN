@@ -35,9 +35,32 @@
                                     <div style="text-align: justify"><%#Eval("pr_content") %></div>
                                 </div>
                                 <div class="c20"></div>
+                                <div class="product-quantity">Số lượng còn lại: <%# Eval("pr_soluong") %></div>
+                                <div class="c20"></div>
                                 <div class="price-detail">Giá: <%#Eval("pr_price") %>₫</div>
                                 <div class="c20"></div>
-                                <a href="javascript:void(0)" class="btn-order-detail" onclick="addCart(<%#Eval("pr_id") %>)">Đặt hàng ngay</a>
+                                <div class="size-selection">
+                                    <span>Chọn Size:</span>
+                                    <input type="radio" id="sizeS" name="product_size" value="S" />
+                                    <label for="sizeS">S</label>
+                                    <input type="radio" id="sizeM" name="product_size" value="M" checked="checked" />
+                                    <label for="sizeM">M</label>
+                                    <input type="radio" id="sizeL" name="product_size" value="L" />
+                                    <label for="sizeL">L</label>
+                                    <input type="radio" id="sizeXL" name="product_size" value="XL" />
+                                    <label for="sizeXL">XL</label>
+                                </div>
+                                <div class="c20"></div>
+                                <div class="quantity-input-section" style="margin-bottom: 10px; display: flex; align-items: center;">
+                                    <label for='quantity_<%# Eval("pr_id") %>' style="margin-right: 10px; font-weight: bold;">Số lượng:</label>
+                                    <input type="number" class="product-quantity-input" id='quantity_<%# Eval("pr_id") %>' value="1" min="1" max='<%# Eval("pr_soluong") %>' style="width: 70px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; text-align: center;" />
+                                </div>
+                                <div class="c20"></div>
+                                <a href="javascript:void(0)" class="btn-order-detail"
+                                   onclick='<%# Eval("pr_status") != null && Eval("pr_status").ToString() == "Hết" ? "" : "addCart(" + Eval("pr_id") + ")" %>'
+                                   style='<%# Eval("pr_status") != null && Eval("pr_status").ToString() == "Hết" ? "pointer-events:none;opacity:0.5;cursor:not-allowed;" : "" %>'>
+                                    <%# Eval("pr_status") != null && Eval("pr_status").ToString() == "Hết" ? "Hết hàng" : "Đặt hàng ngay" %>
+                                </a>
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -59,11 +82,30 @@
     <br />
     <div style="display: none">
             <input type="text" id="txtId" runat="server" name="name" value="" />
+            <asp:HiddenField ID="txtQuantity" runat="server" />
             <a href="#" id="btnAdd" runat="server" onserverclick="btnAdd_ServerClick">content</a>
         </div>
     <script>
         function addCart(id) {
+            var quantityInput = document.querySelector('.product-quantity-input');
+            var quantity = quantityInput.value;
+            var maxQuantity = parseInt(quantityInput.max) || Infinity;
+            var minQuantity = parseInt(quantityInput.min) || 1;
+            var parsedQuantity = parseInt(quantity);
+
+            if (isNaN(parsedQuantity) || parsedQuantity < minQuantity) {
+                alert('Số lượng không hợp lệ. Vui lòng nhập một số lớn hơn hoặc bằng ' + minQuantity + '.');
+                quantityInput.focus();
+                return;
+            }
+            if (parsedQuantity > maxQuantity) {
+                alert('Số lượng yêu cầu vượt quá số hàng còn lại (' + maxQuantity + '). Vui lòng nhập số lượng nhỏ hơn.');
+                quantityInput.focus();
+                return;
+            }
+
             document.getElementById("<%=txtId.ClientID%>").value = id;
+            document.getElementById("<%=txtQuantity.ClientID%>").value = parsedQuantity;
             document.getElementById("<%=btnAdd.ClientID%>").click();
         }
     </script>

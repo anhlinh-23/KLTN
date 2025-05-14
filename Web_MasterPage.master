@@ -160,8 +160,7 @@
                                         data-bs-toggle="dropdown" aria-expanded="false"><b>Sản phẩm</b>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #f5f5dc;">
-                                        <li><a class="dropdown-item" href="menu"><b><h5>Tất cả</h5>
-                                                                                 </b></a></li>
+                                        <li><a class="dropdown-item" href="menu"><b>Tất cả</b></a></li>
                                         <asp:Repeater runat="server" ID="rpMenu">
                                             <ItemTemplate>
                                                 <li><a class="dropdown-item" href="nhom-<%# Eval("link") %>"><%# Eval("cate_name") %></a></li>
@@ -186,9 +185,9 @@
                             </div>
 
 
-                            <div class="user-icon" style="margin-right: 20px">
+<%--                            <div class="user-icon" style="margin-right: 20px">
                                 <a href="login"><i class="bi bi-people-fill"></i></a>
-                            </div>
+                            </div>--%>
                             <div class="cart-icon">
                                 <a href="gio-hang">
                                     <i class="fa fa-shopping-cart"></i>
