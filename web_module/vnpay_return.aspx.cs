@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
 
 public partial class web_module_module_ThanhToan : System.Web.UI.Page
 {
@@ -103,6 +104,26 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                                 order.order_status = "Đã xong";
                                 db.SubmitChanges();
 
+                                // Lấy email khách hàng từ bảng user
+                                string toEmail = (from u in db.tb_Users where u.us_id == order.us_id select u.us_email).FirstOrDefault();
+                                string orderCodeMail = order.order_id.ToString();
+                                DateTime payDateMail = DateTime.Now;
+                                string paymentMethod = "VNPAY";
+                                decimal total = Convert.ToDecimal(order.order_total);
+                                var details = (from od in db.tb_OrderDetails
+                                               join pr in db.tb_Products on od.pr_id equals pr.pr_id
+                                               where od.order_id == order.order_id
+                                               select new OrderDetailMail
+                                               {
+                                                   ImageUrl = (pr.pr_image.StartsWith("/") ? "https://thoitrangnu.com" + pr.pr_image : "https://thoitrangnu.com/images/" + pr.pr_image),
+                                                   ProductCode = pr.pr_id.ToString(),
+                                                   Size = "",
+                                                   Price = Convert.ToDecimal(od.pr_pricecurrent),
+                                                   Quantity = od.pr_number ?? 0,
+                                                   Total = Convert.ToDecimal(od.pr_pricecurrent) * (od.pr_number ?? 0)
+                                               }).ToList();
+                                SendOrderConfirmationEmail(toEmail, orderCodeMail, payDateMail, paymentMethod, total, details);
+
                                 // Clear cart
                                 Session["Cart"] = null;
                             }
@@ -175,6 +196,72 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                 resultTitle.InnerText = "Lỗi xác thực chữ ký";
                 resultMessage.InnerText = "Dữ liệu giao dịch không hợp lệ. Vui lòng liên hệ với nhân viên hỗ trợ.";
             }
+        }
+    }
+
+    public class OrderDetailMail
+    {
+        public string ImageUrl { get; set; }
+        public string ProductCode { get; set; }
+        public string Size { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
+        public decimal Total { get; set; }
+    }
+
+    public void SendOrderConfirmationEmail(string toEmail, string orderCode, DateTime payDate, string paymentMethod, decimal total, List<OrderDetailMail> details)
+    {
+        string subject = "Xác nhận đơn hàng #" + orderCode;
+        string body =
+            "<b>Kính gửi Quý khách hàng,</b><br>" +
+            "Chúng tôi đã nhận được thanh toán thành công từ bạn. Đơn hàng của bạn sẽ được xử lý và gửi tới địa chỉ được cung cấp trong thời gian sớm nhất.<br><br>" +
+            "<b>Chi tiết thanh toán:</b><br>" +
+            "<ul>" +
+            "<li>Mã đơn hàng: " + orderCode + "</li>" +
+            "<li>Ngày thanh toán: " + payDate.ToString("dd/MM/yyyy HH:mm:ss") + "</li>" +
+            "<li>Phương thức thanh toán: " + paymentMethod + "</li>" +
+            "<li>Tổng thanh toán: " + total.ToString("N0") + " đ</li>" +
+            "</ul>" +
+            "<b>Chi tiết đơn hàng:</b>" +
+            "<table border='1' cellpadding='5' cellspacing='0'>" +
+            "<tr>" +
+            "<th>Hình ảnh</th>" +
+            "<th>Mã sản phẩm</th>" +
+            "<th>Size</th>" +
+            "<th>Đơn giá</th>" +
+            "<th>Số lượng</th>" +
+            "<th>Tổng</th>" +
+            "</tr>" +
+            string.Join("", details.Select(d =>
+                "<tr>" +
+                    "<td><img src='" + d.ImageUrl + "' width='50'/></td>" +
+                    "<td>" + d.ProductCode + "</td>" +
+                    "<td>" + d.Size + "</td>" +
+                    "<td>" + d.Price.ToString("N0") + " đ</td>" +
+                    "<td>" + d.Quantity + "</td>" +
+                    "<td>" + d.Total.ToString("N0") + " đ</td>" +
+                "</tr>"
+            )) +
+            "</table>" +
+            "<br>Xin chân thành cảm ơn sự tin tưởng và ủng hộ của bạn.<br>Trân trọng,";
+
+        MailMessage mail = new MailMessage();
+        mail.To.Add(toEmail);
+        mail.Subject = subject;
+        mail.Body = body;
+        mail.IsBodyHtml = true;
+        mail.From = new MailAddress("truongminhthuy1966@gmail.com", "Tên shop của bạn");
+
+        SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+        smtp.Credentials = new System.Net.NetworkCredential("truongminhthuy1966@gmail.com", "bsarbjqziayrvxll");
+        smtp.EnableSsl = true;
+        try
+        {
+            smtp.Send(mail);
+        }
+        catch (Exception ex)
+        {
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "MailError", "alert('Lỗi gửi mail: " + ex.Message.Replace("'", " ") + "');", true);
         }
     }
 }

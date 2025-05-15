@@ -27,8 +27,8 @@ public partial class web_module_module_BunBoChiTiet : System.Web.UI.Page
                           pr.pr_status,
                           pr_soluong = (
                               (from sl in db.tbVatPham_NhapHang_ChiTiets
-                               where sl.vatpham_id == pr.pr_id
-                               select sl.nhaphangchitiet_soluong).Sum() ?? 0
+                                        where sl.vatpham_id == pr.pr_id
+                                        select sl.nhaphangchitiet_soluong).Sum() ?? 0
                           ) - (
                               (from od in db.tb_OrderDetails
                                join o in db.tb_Orders on od.order_id equals o.order_id

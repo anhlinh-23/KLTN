@@ -36,8 +36,8 @@ public partial class _Default : System.Web.UI.Page
             x.link,
             pr_soluong = (
                 (from sl in db.tbVatPham_NhapHang_ChiTiets
-                 where sl.vatpham_id == x.pr_id
-                 select sl.nhaphangchitiet_soluong).Sum() ?? 0
+                          where sl.vatpham_id == x.pr_id
+                          select sl.nhaphangchitiet_soluong).Sum() ?? 0
             ) - (
                 (from od in db.tb_OrderDetails
                  join o in db.tb_Orders on od.order_id equals o.order_id

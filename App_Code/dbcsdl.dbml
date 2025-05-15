@@ -10,20 +10,20 @@
       <Association Name="admin_GroupUser_admin_AccessGroupUserForm" Member="admin_GroupUser" ThisKey="groupuser_id" OtherKey="groupuser_id" Type="admin_GroupUser" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
-  <Table Name="dbo.admin_AccessUserForm" Member="admin_AccessUserForms">
-    <Type Name="admin_AccessUserForm">
-      <Column Name="uf_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="uf_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="form_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.admin_AccessGroupUserModule" Member="admin_AccessGroupUserModules">
     <Type Name="admin_AccessGroupUserModule">
       <Column Name="gum_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="gum_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="groupuser_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="module_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.admin_AccessUserForm" Member="admin_AccessUserForms">
+    <Type Name="admin_AccessUserForm">
+      <Column Name="uf_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="uf_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="form_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.admin_Form" Member="admin_Forms">
@@ -80,14 +80,13 @@
       <Column Name="groupuser_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tb_Category" Member="tb_Categories">
-    <Type Name="tb_Category">
-      <Column Name="cate_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="cate_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="[_keywords]" Member="_keywords" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="[_description]" Member="_description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="link" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="cate_acti" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+  <Table Name="dbo.tb_OrderDetail" Member="tb_OrderDetails">
+    <Type Name="tb_OrderDetail">
+      <Column Name="ord_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pr_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pr_pricecurrent" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pr_number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="order_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.tb_Order" Member="tb_Orders">
@@ -104,6 +103,16 @@
       <Column Name="order_note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tb_Category" Member="tb_Categories">
+    <Type Name="tb_Category">
+      <Column Name="cate_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cate_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="[_keywords]" Member="_keywords" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="[_description]" Member="_description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="link" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="cate_acti" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.tb_Post" Member="tb_Posts">
     <Type Name="tb_Post">
       <Column Name="post_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -115,15 +124,6 @@
       <Column Name="[_link]" Member="_link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="[_keywords]" Member="_keywords" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="[_description]" Member="_description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tb_OrderDetail" Member="tb_OrderDetails">
-    <Type Name="tb_OrderDetail">
-      <Column Name="ord_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="pr_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="pr_pricecurrent" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="pr_number" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="order_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.tb_Product" Member="tb_Products">
