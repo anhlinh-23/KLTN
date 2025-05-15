@@ -130,6 +130,14 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                 return;
             }
 
+            // Nếu là COD thì cập nhật trạng thái đơn hàng thành 'Đã xong'
+            var codOrder = db.tb_Orders.FirstOrDefault(o => o.order_id == orderId);
+            if (codOrder != null)
+            {
+                codOrder.order_status = "Đã xong";
+                db.SubmitChanges();
+            }
+
             // Clear cart for non-VNPay transactions
             Session["Cart"] = null;
 

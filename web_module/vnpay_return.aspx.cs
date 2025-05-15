@@ -100,7 +100,7 @@ public partial class web_module_module_ThanhToan : System.Web.UI.Page
                             var order = db.tb_Orders.FirstOrDefault(o => o.order_id == orderId);
                             if (order != null)
                             {
-                                order.order_status = "Đã thanh toán";
+                                order.order_status = "Đã xong";
                                 db.SubmitChanges();
 
                                 // Clear cart
